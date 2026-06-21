@@ -22,7 +22,7 @@ export interface DailyForecast {
   temperature_2m_min: number[];
 }
 
-// 1. Geocoding API (OpenStreetMap Nominatim)
+
 export async function searchLocation(query: string): Promise<LocationData[]> {
   try {
     const res = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=5`);
@@ -41,7 +41,7 @@ export async function searchLocation(query: string): Promise<LocationData[]> {
   }
 }
 
-// 2. Reverse Geocoding (Lat/Lon to Name)
+
 export async function reverseGeocode(lat: number, lon: number): Promise<string> {
   try {
     const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
@@ -53,7 +53,7 @@ export async function reverseGeocode(lat: number, lon: number): Promise<string> 
   }
 }
 
-// 3. Open-Meteo Current & Forecast
+
 export async function getWeatherData(lat: number, lon: number): Promise<{ current: CurrentWeather, daily: DailyForecast }> {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=auto`;
   const res = await fetch(url);
@@ -68,14 +68,13 @@ export async function getWeatherData(lat: number, lon: number): Promise<{ curren
   };
 }
 
-// 4. Open-Meteo Historical
+
 export async function getHistoricalWeather(lat: number, lon: number, startDate: string, endDate: string) {
   const url = `https://archive-api.open-meteo.com/v1/archive?latitude=${lat}&longitude=${lon}&start_date=${startDate}&end_date=${endDate}&daily=temperature_2m_max,temperature_2m_min,temperature_2m_mean&timezone=auto`;
   const res = await fetch(url);
   if (!res.ok) throw new Error('Historical Weather API failed');
   const data = await res.json();
   
-  // Calculate averages over the period
   const daily = data.daily;
   if (!daily || !daily.temperature_2m_mean) {
     throw new Error('No data available for this range');
@@ -88,7 +87,7 @@ export async function getHistoricalWeather(lat: number, lon: number, startDate: 
   return { avgTemp, maxTemp, minTemp };
 }
 
-// 5. Wikipedia Summary
+
 export async function getWikipediaSummary(locationName: string): Promise<string> {
   try {
     const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(locationName)}`);
@@ -100,7 +99,7 @@ export async function getWikipediaSummary(locationName: string): Promise<string>
   }
 }
 
-// Map Weather Codes to standard descriptions and icons
+
 export function getWeatherDetails(code: number) {
   const codeMap: Record<number, { description: string, icon: string }> = {
     0: { description: 'Clear sky', icon: 'Sun' },

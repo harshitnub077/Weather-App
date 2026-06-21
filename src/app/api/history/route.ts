@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Start date must be before end date' }, { status: 400 });
     }
 
-    // 1. Validate location and get coordinates
+
     const locations = await searchLocation(location);
     if (locations.length === 0) {
       return NextResponse.json({ error: 'Location not found' }, { status: 404 });
@@ -34,10 +34,10 @@ export async function POST(request: Request) {
 
     const loc = locations[0];
 
-    // 2. Fetch historical weather data
+
     const history = await getHistoricalWeather(loc.lat, loc.lon, startDate, endDate);
 
-    // 3. Save to database
+
     const record = await prisma.weatherRecord.create({
       data: {
         location: loc.name,

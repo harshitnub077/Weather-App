@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="space-y-8 animate-in fade-in duration-700 ease-out">
       
-      {/* Tabs */}
+
       <div className="flex bg-gray-100/50 dark:bg-white/5 p-1 rounded-full w-full max-w-sm mx-auto border border-gray-200/50 dark:border-white/5 backdrop-blur-md">
         <button
           onClick={() => setActiveTab('current')}
@@ -34,7 +34,7 @@ export default function Home() {
         </button>
       </div>
 
-      {/* Content */}
+
       <div className="mt-8 transition-opacity duration-300">
         {activeTab === 'current' ? <WeatherView /> : <HistoryView />}
       </div>

@@ -125,7 +125,7 @@ export default function WeatherView() {
 
       {location && weather && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
-          {/* Current Weather Card */}
+
           <div className="lg:col-span-2 bg-white/60 dark:bg-[#111]/60 backdrop-blur-xl rounded-3xl shadow-sm p-8 border border-gray-200/50 dark:border-white/5">
             <div className="flex justify-between items-start mb-8">
               <div>
@@ -167,7 +167,7 @@ export default function WeatherView() {
               </div>
             </div>
 
-            {/* 5-Day Forecast */}
+
             <div className="mt-12">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-6">5-Day Forecast</h3>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
@@ -190,7 +190,7 @@ export default function WeatherView() {
             </div>
           </div>
 
-          {/* Sidebar: Map & Wiki */}
+
           <div className="space-y-6">
             <div className="bg-white/60 dark:bg-[#111]/60 backdrop-blur-xl rounded-3xl shadow-sm p-4 border border-gray-200/50 dark:border-white/5 overflow-hidden">
               <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-4 px-2 flex items-center gap-2"><MapPin size={14}/> Map</h3>

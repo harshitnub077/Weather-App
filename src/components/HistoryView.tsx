@@ -20,7 +20,7 @@ export default function HistoryView() {
   const [records, setRecords] = useState<WeatherRecord[]>([]);
   const [loading, setLoading] = useState(true);
   
-  // Form State
+
   const [location, setLocation] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -127,7 +127,7 @@ export default function HistoryView() {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out">
-      {/* CRUD Form */}
+
       <div className="bg-white/60 dark:bg-[#111]/60 backdrop-blur-xl rounded-3xl shadow-sm p-8 border border-gray-200/50 dark:border-white/5">
         <h2 className="text-lg font-semibold mb-6 flex items-center gap-2">
           {editingId ? <Edit2 size={18} /> : <Plus size={18} />}
@@ -150,7 +150,7 @@ export default function HistoryView() {
             <input
               type="date"
               required
-              max={new Date().toISOString().split('T')[0]} // Max date is today
+              max={new Date().toISOString().split('T')[0]}
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
               className="w-full px-4 py-3 rounded-xl border border-gray-200/60 dark:border-white/5 bg-white/50 dark:bg-[#1a1a1a]/50 backdrop-blur-md focus:ring-1 focus:ring-blue-500/50 outline-none transition-all font-medium text-sm"
@@ -191,7 +191,7 @@ export default function HistoryView() {
         {error && <p className="text-red-500 text-sm font-medium mt-4 bg-red-50/50 dark:bg-red-900/10 p-3 rounded-lg border border-red-200 dark:border-red-900/30">{error}</p>}
       </div>
 
-      {/* Export & Data Table */}
+
       <div className="bg-white/60 dark:bg-[#111]/60 backdrop-blur-xl rounded-3xl shadow-sm p-8 border border-gray-200/50 dark:border-white/5">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-6">
           <h2 className="text-lg font-semibold tracking-tight">Saved Records</h2>
